@@ -158,7 +158,7 @@ export default function Portfolio() {
               <Button
                 variant="outline"
                 size="icon"
-                className="md:hidden rounded-full"
+                className="md:hidden rounded-full bg-transparent"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 <ChevronDown
@@ -261,7 +261,7 @@ export default function Portfolio() {
                     className="flex gap-4 justify-center md:justify-start"
                   >
                     <motion.a
-                      href="https://github.com/mhdsahil1"
+                      href="https://github.com/sahilmhd"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1 }}
@@ -556,12 +556,12 @@ export default function Portfolio() {
                       <div>
                         <h3 className="font-medium">GitHub</h3>
                         <a
-                          href="https://github.com/mhdsahil1"
+                          href="https://github.com/sahilmhd"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-muted-foreground hover:text-primary transition-colors"
                         >
-                          mhdsahil1
+                          sahilmhd
                         </a>
                       </div>
                     </div>
