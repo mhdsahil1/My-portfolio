@@ -273,7 +273,7 @@ export default function Portfolio() {
                   className="flex gap-4 justify-center md:justify-start"
                 >
                   <motion.a
-                    href="https://github.com/sahilmhd"
+                    href="https://github.com/mhdsahil1"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1 }}
@@ -564,12 +564,12 @@ export default function Portfolio() {
                     <div>
                       <h3 className="font-medium">GitHub</h3>
                       <a
-                        href="https://github.com/sahilmhd"
+                        href="https://github.com/mhdsahil1"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        sahilmhd
+                        mhdsahil1
                       </a>
                     </div>
                   </div>
