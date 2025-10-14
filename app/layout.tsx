@@ -9,6 +9,7 @@ export const metadata = {
   title: "Muhammed Sahil - Portfolio",
   description: "Personal portfolio of Muhammed Sahil, a B.Tech student in Computer Science (Cyber Security)",
   generator: "v0.dev",
+  icons: { icon: "/favicon.jpg" },
 }
 
 export default function RootLayout({

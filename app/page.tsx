@@ -228,8 +228,8 @@ export default function Portfolio() {
               >
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/50 shadow-xl shadow-primary/20">
                   <img
-                    src="/images/design-mode/sahil%20crop%202.jpg"
-                    alt="Portfolio portrait"
+                    src="/images/hero-portrait.png"
+                    alt="Sahil portrait with purple circle backdrop"
                     className="w-full h-full object-cover object-center"
                   />
                 </div>
