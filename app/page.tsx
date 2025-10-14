@@ -227,7 +227,11 @@ export default function Portfolio() {
                 className="relative"
               >
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/50 shadow-xl shadow-primary/20">
-                  <img src="/images/sahil.jpg" alt="Muhammed Sahil" className="w-full h-full object-cover" />
+                  <img
+                    src="/images/design-mode/sahil%20crop%202.jpg"
+                    alt="Portfolio portrait"
+                    className="w-full h-full object-cover object-center"
+                  />
                 </div>
                 <motion.div
                   className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary/30 to-purple-500/30 blur-xl -z-10"
