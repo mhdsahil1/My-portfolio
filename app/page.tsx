@@ -427,28 +427,37 @@ export default function Portfolio() {
                   Technologies & Tools
                 </motion.h3>
 
+                <SkillProgressBar name="React" percentage={75} delay={0.1} icon={<Code2 className="h-5 w-5" />} />
+                <SkillProgressBar
+                  name="Tailwind CSS"
+                  percentage={80}
+                  delay={0.15}
+                  icon={<BookOpen className="h-5 w-5" />}
+                />
+                <SkillProgressBar name="MongoDB" percentage={65} delay={0.2} icon={<Terminal className="h-5 w-5" />} />
+                <SkillProgressBar name="NoSQL" percentage={65} delay={0.25} icon={<Terminal className="h-5 w-5" />} />
                 <SkillProgressBar
                   name="Web Development"
                   percentage={80}
-                  delay={0.1}
+                  delay={0.3}
                   icon={<BookOpen className="h-5 w-5" />}
                 />
                 <SkillProgressBar
                   name="Cyber Security"
                   percentage={65}
-                  delay={0.2}
+                  delay={0.35}
                   icon={<Terminal className="h-5 w-5" />}
                 />
                 <SkillProgressBar
                   name="Git & GitHub"
                   percentage={75}
-                  delay={0.3}
+                  delay={0.4}
                   icon={<Github className="h-5 w-5" />}
                 />
                 <SkillProgressBar
                   name="Problem Solving"
                   percentage={85}
-                  delay={0.4}
+                  delay={0.45}
                   icon={<Code2 className="h-5 w-5" />}
                 />
               </div>
