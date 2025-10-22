@@ -388,79 +388,31 @@ export default function Portfolio() {
               <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <div className="space-y-8">
-                <motion.h3
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="text-2xl font-bold"
-                >
-                  Programming Languages
-                </motion.h3>
-
-                <SkillProgressBar name="C++" percentage={75} delay={0.1} icon={<Code2 className="h-5 w-5" />} />
-                <SkillProgressBar
-                  name="JavaScript"
-                  percentage={70}
-                  delay={0.2}
-                  icon={<Terminal className="h-5 w-5" />}
-                />
-                <SkillProgressBar
-                  name="HTML & CSS"
-                  percentage={85}
-                  delay={0.3}
-                  icon={<BookOpen className="h-5 w-5" />}
-                />
-                <SkillProgressBar name="Python" percentage={60} delay={0.4} icon={<Code2 className="h-5 w-5" />} />
-              </div>
-
-              <div className="space-y-8">
-                <motion.h3
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="text-2xl font-bold"
-                >
-                  Technologies & Tools
-                </motion.h3>
-
-                <SkillProgressBar name="React" percentage={75} delay={0.1} icon={<Code2 className="h-5 w-5" />} />
-                <SkillProgressBar
-                  name="Tailwind CSS"
-                  percentage={80}
-                  delay={0.15}
-                  icon={<BookOpen className="h-5 w-5" />}
-                />
-                <SkillProgressBar name="MongoDB" percentage={65} delay={0.2} icon={<Terminal className="h-5 w-5" />} />
-                <SkillProgressBar name="NoSQL" percentage={65} delay={0.25} icon={<Terminal className="h-5 w-5" />} />
-                <SkillProgressBar
-                  name="Web Development"
-                  percentage={80}
-                  delay={0.3}
-                  icon={<BookOpen className="h-5 w-5" />}
-                />
-                <SkillProgressBar
-                  name="Cyber Security"
-                  percentage={65}
-                  delay={0.35}
-                  icon={<Terminal className="h-5 w-5" />}
-                />
-                <SkillProgressBar
-                  name="Git & GitHub"
-                  percentage={75}
-                  delay={0.4}
-                  icon={<Github className="h-5 w-5" />}
-                />
-                <SkillProgressBar
-                  name="Problem Solving"
-                  percentage={85}
-                  delay={0.45}
-                  icon={<Code2 className="h-5 w-5" />}
-                />
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-16">
+              <SkillCategoryCard
+                title="Languages"
+                skills={["C++", "JavaScript", "Python", "HTML & CSS"]}
+                icon={<Code2 className="h-6 w-6" />}
+                delay={0}
+              />
+              <SkillCategoryCard
+                title="Frontend"
+                skills={["React", "Tailwind CSS", "Next.js", "Responsive Design"]}
+                icon={<BookOpen className="h-6 w-6" />}
+                delay={0.1}
+              />
+              <SkillCategoryCard
+                title="Backend & Database"
+                skills={["MongoDB", "NoSQL", "Web Development", "APIs"]}
+                icon={<Terminal className="h-6 w-6" />}
+                delay={0.2}
+              />
+              <SkillCategoryCard
+                title="Tools & Soft Skills"
+                skills={["Git & GitHub", "Problem Solving", "Cyber Security", "Communication"]}
+                icon={<Github className="h-6 w-6" />}
+                delay={0.3}
+              />
             </div>
 
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -663,6 +615,45 @@ function ProjectCard({ title, description, tags, delay = 0 }) {
             </motion.span>
           ))}
         </div>
+      </div>
+    </motion.div>
+  )
+}
+
+function SkillCategoryCard({ title, skills, icon, delay = 0 }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      viewport={{ once: true, margin: "-100px" }}
+      whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
+      className="bg-card border border-border rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/50 group"
+    >
+      <div className="flex items-center gap-3 mb-6">
+        <motion.div
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          className="text-primary group-hover:text-primary-foreground"
+        >
+          {icon}
+        </motion.div>
+        <h3 className="text-lg font-bold group-hover:text-primary transition-colors">{title}</h3>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        {skills.map((skill, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: delay + index * 0.05 }}
+            viewport={{ once: true }}
+            className="px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors"
+          >
+            {skill}
+          </motion.span>
+        ))}
       </div>
     </motion.div>
   )
