@@ -5,6 +5,8 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { Github, Linkedin, Mail, Code2, Terminal, BookOpen, ExternalLink, Moon, Sun, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
+import { GeolocationTracker } from "@/components/geolocation-tracker"
+import { AdminButton } from "@/components/admin-button"
 
 export default function Portfolio() {
   const { theme, setTheme } = useTheme()
@@ -125,6 +127,8 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-background/80 text-foreground">
+      <GeolocationTracker />
+      <AdminButton />
       <div
         className="fixed top-0 left-0 h-1 bg-gradient-to-r from-purple-500 via-cyan-500 to-purple-500 z-50"
         style={{ width: `${scrollProgress * 100}%` }}
