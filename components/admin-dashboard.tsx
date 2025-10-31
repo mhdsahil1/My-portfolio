@@ -125,7 +125,17 @@ export function AdminDashboard({ onClose }: { onClose: () => void }) {
                       <p className="font-medium">
                         {visitor.city}, {visitor.country}
                       </p>
-                      <p className="text-xs text-muted-foreground">{new Date(visitor.visited_at).toLocaleString()}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {new Date(visitor.visited_at).toLocaleString("en-IN", {
+                          timeZone: "Asia/Kolkata",
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          second: "2-digit",
+                        })}
+                      </p>
                     </div>
                   </div>
                 </motion.div>

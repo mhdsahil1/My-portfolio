@@ -17,6 +17,8 @@ export function GeolocationTracker() {
               const geoResponse = await fetch(`https://ipapi.co/json/`)
               const geoData = await geoResponse.json()
 
+              const visitedAt = new Date().toISOString()
+
               // Store visitor data in Supabase
               const supabase = createClient()
               await supabase.from("visitors").insert({
@@ -26,6 +28,7 @@ export function GeolocationTracker() {
                 latitude: latitude,
                 longitude: longitude,
                 user_agent: navigator.userAgent,
+                visited_at: visitedAt,
               })
             },
             (error) => {
@@ -46,12 +49,15 @@ export function GeolocationTracker() {
         const geoResponse = await fetch(`https://ipapi.co/json/`)
         const geoData = await geoResponse.json()
 
+        const visitedAt = new Date().toISOString()
+
         const supabase = createClient()
         await supabase.from("visitors").insert({
           ip_address: geoData.ip,
           country: geoData.country_name,
           city: geoData.city,
           user_agent: navigator.userAgent,
+          visited_at: visitedAt,
         })
       } catch (error) {
         console.error("[v0] Error tracking visitor with IP:", error)
