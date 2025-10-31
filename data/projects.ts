@@ -1,0 +1,68 @@
+export interface Project {
+  id: string
+  title: string
+  description: string
+  tags: string[]
+  category: string
+  link?: string
+  github?: string
+}
+
+export const projects: Project[] = [
+  {
+    id: "portfolio",
+    title: "Personal Portfolio Website",
+    description:
+      "A fully responsive portfolio website showcasing my projects, skills, and experience built with Next.js and Tailwind CSS.",
+    tags: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+    category: "Web Development",
+    link: "https://mhdsahil-portfolio.vercel.app",
+    github: "https://github.com/mhdsahil1/portfolio",
+  },
+  {
+    id: "todo-app",
+    title: "Interactive Todo Application",
+    description:
+      "A feature-rich todo app with real-time updates, local storage persistence, and beautiful animations using React hooks.",
+    tags: ["React", "JavaScript", "Local Storage", "CSS"],
+    category: "Web Development",
+    github: "https://github.com/mhdsahil1/todo-app",
+  },
+  {
+    id: "cyber-blog",
+    title: "Cyber Security Blog",
+    description:
+      "An informative blog platform dedicated to cyber security topics, best practices, and recent security trends.",
+    tags: ["Next.js", "Markdown", "Tailwind CSS", "SEO"],
+    category: "Content & Education",
+    link: "https://cyber-blog-example.vercel.app",
+  },
+  {
+    id: "calculator",
+    title: "Scientific Calculator",
+    description:
+      "A fully functional calculator built with vanilla JavaScript supporting basic and advanced mathematical operations.",
+    tags: ["JavaScript", "HTML", "CSS", "Algorithms"],
+    category: "Utilities",
+    github: "https://github.com/mhdsahil1/calculator",
+  },
+  {
+    id: "weather-app",
+    title: "Weather Application",
+    description:
+      "Real-time weather app with geolocation support, forecast data, and beautiful UI for checking weather conditions.",
+    tags: ["React", "API Integration", "Geolocation", "Tailwind CSS"],
+    category: "Web Development",
+    link: "https://weather-app-example.vercel.app",
+    github: "https://github.com/mhdsahil1/weather-app",
+  },
+  {
+    id: "password-generator",
+    title: "Secure Password Generator",
+    description:
+      "A utility tool that generates strong, customizable passwords with various security options and copy-to-clipboard functionality.",
+    tags: ["JavaScript", "React", "Cryptography", "UI/UX"],
+    category: "Utilities",
+    github: "https://github.com/mhdsahil1/password-generator",
+  },
+]

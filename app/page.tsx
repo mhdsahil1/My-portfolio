@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
 import { GeolocationTracker } from "@/components/geolocation-tracker"
 import { AdminButton } from "@/components/admin-button"
+import { ContactForm } from "@/components/contact-form"
+import { ProjectFilter } from "@/components/project-filter"
+import { projects } from "@/data/projects" // Declare the projects variable
 
 export default function Portfolio() {
   const { theme, setTheme } = useTheme()
@@ -451,23 +454,12 @@ export default function Portfolio() {
               viewport={{ once: true, margin: "-100px" }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">Learning Projects</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-2">My Projects</h2>
               <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <ProjectCard
-                title="Portfolio Website"
-                description="A personal portfolio website built with HTML, CSS, and JavaScript"
-                tags={["HTML", "CSS", "JavaScript"]}
-                delay={0}
-              />
-              <ProjectCard
-                title="Cyber Security Blog"
-                description="A blog focused on cyber security topics and best practices"
-                tags={["React", "Next.js", "Tailwind"]}
-                delay={0.2}
-              />
+            <div className="max-w-5xl mx-auto">
+              <ProjectFilter projects={projects} />
             </div>
           </div>
         </section>
@@ -485,65 +477,8 @@ export default function Portfolio() {
               <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
             </motion.div>
 
-            <div className="max-w-md mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="bg-card rounded-xl shadow-xl p-6 border border-border"
-              >
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center gap-3">
-                    <div className="bg-primary/10 p-3 rounded-full">
-                      <Mail className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium">Email</h3>
-                      <a
-                        href="mailto:muhammedsahilshaz09@gmail.com"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        muhammedsahilshaz09@gmail.com
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="bg-primary/10 p-3 rounded-full">
-                      <Linkedin className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium">LinkedIn</h3>
-                      <a
-                        href="https://www.linkedin.com/in/muhammad-sahil-474a59293/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        muhammad-sahil
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="bg-primary/10 p-3 rounded-full">
-                      <Github className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium">GitHub</h3>
-                      <a
-                        href="https://github.com/mhdsahil1"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        mhdsahil1
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+            <div className="max-w-4xl mx-auto">
+              <ContactForm />
             </div>
           </div>
         </section>
@@ -642,7 +577,7 @@ function SkillCategoryCard({ title, skills, icon, delay = 0 }) {
         >
           {icon}
         </motion.div>
-        <h3 className="text-lg font-bold group-hover:text-primary transition-colors">{title}</h3>
+        <h3 className="text-lg font-medium group-hover:text-primary transition-colors">{title}</h3>
       </div>
 
       <div className="flex flex-wrap gap-2">
