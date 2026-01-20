@@ -3,6 +3,7 @@ import "@/app/globals.css"
 import { Inter, Space_Mono, JetBrains_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { TerminalAnimation } from "@/components/terminal-animation"
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ["latin"] })
 const spaceMono = Space_Mono({
@@ -104,6 +105,7 @@ export default function RootLayout({
           </div>
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
