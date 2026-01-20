@@ -1,8 +1,20 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 export function TerminalAnimation() {
+  const [mounted, setMounted] = useState(false)
+  const [windowSize, setWindowSize] = useState({ width: 800, height: 600 })
+
+  useEffect(() => {
+    setMounted(true)
+    setWindowSize({
+      width: typeof window !== 'undefined' ? window.innerWidth : 800,
+      height: typeof window !== 'undefined' ? window.innerHeight : 600,
+    })
+  }, [])
+
   const codeSnippets = [
     '> npm run build',
     '> const fullStack = true',
@@ -12,6 +24,10 @@ export function TerminalAnimation() {
     '> whoami developer',
   ]
 
+  if (!mounted) {
+    return null
+  }
+
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
       {/* Floating terminal blocks */}
@@ -20,12 +36,12 @@ export function TerminalAnimation() {
           key={index}
           className="absolute text-xs font-mono"
           initial={{
-            x: Math.random() * window.innerWidth,
+            x: Math.random() * windowSize.width,
             y: -50,
             opacity: 0,
           }}
           animate={{
-            y: ['-50px', window.innerHeight + 50],
+            y: ['-50px', windowSize.height + 50],
             opacity: [0, 0.3, 0.3, 0],
           }}
           transition={{
