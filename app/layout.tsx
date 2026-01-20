@@ -80,6 +80,19 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {/* Cybersecurity animated background elements */}
+          <div className="fixed inset-0 pointer-events-none overflow-hidden -z-20">
+            {/* Animated grid background */}
+            <div className="absolute inset-0 opacity-5 dark:opacity-10" style={{
+              backgroundImage: 'linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px), linear-gradient(0deg, hsl(var(--primary)) 1px, transparent 1px)',
+              backgroundSize: '100px 100px',
+              animation: 'cyber-grid 30s linear infinite',
+            }} />
+            
+            {/* Floating cyber elements */}
+            <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float-code" />
+            <div className="absolute bottom-40 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />
+          </div>
           {children}
         </ThemeProvider>
       </body>

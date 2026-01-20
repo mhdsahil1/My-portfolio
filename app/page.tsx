@@ -224,27 +224,32 @@ export default function Portfolio() {
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{
                   duration: 0.8,
                   type: "spring",
                   stiffness: 100,
                 }}
-                className="relative"
+                className="relative group"
               >
-                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/50 shadow-xl shadow-primary/20">
+                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/50 shadow-xl shadow-primary/20 relative animate-pulse-border">
                   <img
                     src="/images/hero-portrait.png"
                     alt="Sahil portrait with purple circle backdrop"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <motion.div
+                    className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 via-transparent to-primary/20 opacity-0 group-hover:opacity-100"
+                    animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
+                    transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
                   />
                 </div>
                 <motion.div
-                  className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary/30 to-purple-500/30 blur-xl -z-10"
+                  className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary/30 to-purple-500/30 blur-xl -z-10 animate-cyber-glow"
                   animate={{
-                    scale: [1, 1.05, 1],
-                    opacity: [0.5, 0.8, 0.5],
+                    scale: [1, 1.1, 1],
+                    opacity: [0.5, 0.9, 0.5],
                   }}
                   transition={{
                     duration: 3,
@@ -416,7 +421,7 @@ export default function Portfolio() {
               />
               <SkillCategoryCard
                 title="Tools & Soft Skills"
-                skills={["Git & GitHub", "Problem Solving", "Cyber Security", "Communication"]}
+                skills={["Linux", "Git & GitHub", "Problem Solving", "Cyber Security"]}
                 icon={<Github className="h-6 w-6" />}
                 delay={0.3}
               />
@@ -445,17 +450,37 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section id="projects" ref={projectsRef} className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
+        <section id="projects" ref={projectsRef} className="py-20 bg-muted/30 cyber-background relative">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <motion.div 
+              className="absolute inset-0 opacity-10"
+              animate={{ backgroundPosition: ["0px 0px", "100px 100px"] }}
+              transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY }}
+              style={{
+                backgroundImage: 'radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px)',
+                backgroundSize: '50px 50px',
+              }}
+            />
+          </div>
+          <div className="container mx-auto px-4 relative z-10">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6, type: "spring" }}
               viewport={{ once: true, margin: "-100px" }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">My Projects</h2>
-              <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+              <motion.h2 
+                className="text-3xl md:text-4xl font-bold mb-2 animate-cyber-glow"
+                whileInView={{ letterSpacing: "0.05em" }}
+              >
+                My Projects
+              </motion.h2>
+              <motion.div 
+                className="w-20 h-1 bg-primary mx-auto rounded-full"
+                animate={{ scaleX: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+              />
             </motion.div>
 
             <div className="max-w-5xl mx-auto">
@@ -464,17 +489,28 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section id="contact" ref={contactRef} className="py-20">
-          <div className="container mx-auto px-4">
+        <section id="contact" ref={contactRef} className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 cyber-background pointer-events-none" />
+          <div className="container mx-auto px-4 relative z-10">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
               viewport={{ once: true, margin: "-100px" }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">Get In Touch</h2>
-              <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+              <motion.h2 
+                className="text-3xl md:text-4xl font-bold mb-2 animate-cyber-glow"
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+              >
+                Get In Touch
+              </motion.h2>
+              <motion.div 
+                className="w-20 h-1 bg-primary mx-auto rounded-full"
+                animate={{ width: [80, 100, 80] }}
+                transition={{ duration: 2.5, repeat: Number.POSITIVE_INFINITY }}
+              />
             </motion.div>
 
             <div className="max-w-4xl mx-auto">
@@ -562,33 +598,41 @@ function ProjectCard({ title, description, tags, delay = 0 }) {
 function SkillCategoryCard({ title, skills, icon, delay = 0 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay }}
+      transition={{ duration: 0.6, delay, type: "spring" }}
       viewport={{ once: true, margin: "-100px" }}
-      whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-      className="bg-card border border-border rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/50 group"
+      whileHover={{ y: -12, boxShadow: "0 20px 60px rgba(147, 112, 219, 0.3)" }}
+      className="bg-card border border-border rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-primary/70 group relative overflow-hidden animate-pulse-border"
     >
-      <div className="flex items-center gap-3 mb-6">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      
+      <div className="flex items-center gap-3 mb-6 relative z-10">
         <motion.div
-          whileHover={{ scale: 1.1, rotate: 5 }}
+          whileHover={{ scale: 1.2, rotate: 10 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          className="text-primary group-hover:text-primary-foreground"
+          className="text-primary group-hover:text-primary-foreground animate-cyber-glow"
         >
           {icon}
         </motion.div>
-        <h3 className="text-lg font-medium group-hover:text-primary transition-colors">{title}</h3>
+        <motion.h3 
+          className="text-lg font-medium group-hover:text-primary transition-colors"
+          whileHover={{ x: 4 }}
+        >
+          {title}
+        </motion.h3>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 relative z-10">
         {skills.map((skill, index) => (
           <motion.span
             key={index}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: delay + index * 0.05 }}
+            initial={{ opacity: 0, scale: 0, x: -20 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ delay: delay + index * 0.08, type: "spring", stiffness: 100 }}
             viewport={{ once: true }}
-            className="px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors"
+            whileHover={{ scale: 1.05, rotate: 2 }}
+            className="px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-xs font-medium hover:bg-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 cursor-pointer"
           >
             {skill}
           </motion.span>
