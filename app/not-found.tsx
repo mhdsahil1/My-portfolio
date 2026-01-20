@@ -4,8 +4,43 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Home, Terminal } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useEffect, useState } from 'react'
 
 export default function NotFound() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-background/80 px-4">
+        <div className="text-center">
+          <div className="inline-block text-6xl md:text-8xl font-bold text-primary/30 mb-4">
+            404
+          </div>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">Page Not Found</h1>
+          <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">
+            <Terminal className="inline h-5 w-5 mr-2" />
+            The page you're looking for doesn't exist.
+          </p>
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Button asChild className="rounded-full px-8 py-6 bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-700">
+              <Link href="/">
+                <Home className="h-5 w-5 mr-2" />
+                Return Home
+              </Link>
+            </Button>
+            <Button asChild variant="outline" className="rounded-full px-8 py-6 bg-transparent">
+              <Link href="/#projects">View Projects</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-background/80 px-4">
       <motion.div
