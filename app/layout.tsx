@@ -1,11 +1,17 @@
 import type React from "react"
 import "@/app/globals.css"
-import { Inter, Space_Mono } from "next/font/google"
+import { Inter, Space_Mono, JetBrains_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { TerminalAnimation } from "@/components/terminal-animation"
 
 const inter = Inter({ subsets: ["latin"] })
 const spaceMono = Space_Mono({
   weight: ["400", "700"],
+  subsets: ["latin"],
+  display: "swap",
+})
+const jetbrainsMono = JetBrains_Mono({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   display: "swap",
 })
@@ -78,8 +84,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={inter.className}>
+      <body className={`${jetbrainsMono.className} font-mono`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {/* Terminal animations in blank spaces */}
+          <TerminalAnimation />
+          
           {/* Cybersecurity animated background elements */}
           <div className="fixed inset-0 pointer-events-none overflow-hidden -z-20">
             {/* Animated grid background */}
