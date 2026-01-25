@@ -22,14 +22,17 @@ export default function Portfolio() {
   const skillsRef = useRef<HTMLDivElement>(null)
   const projectsRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
+  const [y, setY] = useState(0)
+  const [opacity, setOpacity] = useState(1)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 500], [0, -150])
-  const opacity = useTransform(scrollY, [0, 300], [1, 0.3])
+  // Disabled scroll transforms for performance
+  // const { scrollY } = useScroll()
+  // const y = useTransform(scrollY, [0, 500], [0, -150])
+  // const opacity = useTransform(scrollY, [0, 300], [1, 0.3])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,7 +97,6 @@ export default function Portfolio() {
   ]
 
   const scrollToSection = (id: string) => {
-    console.log("[v0] Scrolling to section:", id)
     const element = document.getElementById(id)
     if (element) {
       window.scrollTo({
@@ -106,7 +108,6 @@ export default function Portfolio() {
   }
 
   const handleThemeToggle = () => {
-    console.log("[v0] Current theme:", theme)
     if (!mounted) return
 
     if (theme === "light") {
@@ -219,7 +220,7 @@ export default function Portfolio() {
           id="home"
           ref={heroRef}
           className="min-h-[90vh] flex items-center justify-center py-20"
-          style={{ y, opacity }}
+          style={{ transform: `translateY(${y}px)`, opacity }}
         >
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
@@ -388,64 +389,286 @@ export default function Portfolio() {
         </section>
 
         <section id="skills" ref={skillsRef} className="py-20">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="text-center mb-16"
+              className="mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-2">Technical Skills</h2>
-              <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+              <p className="text-muted-foreground">Technologies and tools I work with</p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-16">
-              <SkillCategoryCard
-                title="Languages"
-                skills={["C++", "JavaScript", "Python", "HTML & CSS"]}
-                icon={<Code2 className="h-6 w-6" />}
-                delay={0}
-              />
-              <SkillCategoryCard
-                title="Frontend"
-                skills={["React", "Tailwind CSS", "Next.js", "Responsive Design"]}
-                icon={<BookOpen className="h-6 w-6" />}
-                delay={0.1}
-              />
-              <SkillCategoryCard
-                title="Backend & Database"
-                skills={["MongoDB", "NoSQL", "Web Development", "APIs"]}
-                icon={<Terminal className="h-6 w-6" />}
-                delay={0.2}
-              />
-              <SkillCategoryCard
-                title="Tools & Soft Skills"
-                skills={["Linux", "Git & GitHub", "Problem Solving", "Cyber Security"]}
-                icon={<Github className="h-6 w-6" />}
-                delay={0.3}
-              />
-            </div>
+            <div className="space-y-12">
+              {/* Languages */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="text-2xl text-primary">
+                    <Code2 className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-semibold">Programming Languages</h3>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {["C++", "JavaScript", "Python", "HTML & CSS"].map((skill, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.05, duration: 0.3 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      className="px-4 py-2 rounded-lg border border-primary/20 bg-primary/5 text-foreground hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 text-sm font-medium"
+                      style={{ transform: 'translateZ(0)' }}
+                    >
+                      {skill}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
 
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <SkillCard
-                icon={<Code2 className="h-10 w-10" />}
-                title="C++"
-                description="Learning data structures and algorithms with C++"
-                delay={0}
-              />
-              <SkillCard
-                icon={<Terminal className="h-10 w-10" />}
-                title="JavaScript"
-                description="Building interactive web applications"
-                delay={0.2}
-              />
-              <SkillCard
-                icon={<BookOpen className="h-10 w-10" />}
-                title="Web Development"
-                description="Creating responsive and modern websites"
-                delay={0.4}
-              />
+              {/* Frontend */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="text-2xl text-primary">
+                    <BookOpen className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-semibold">Frontend Development</h3>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {["React", "Tailwind CSS", "Next.js", "Responsive Design"].map((skill, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.05, duration: 0.3 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      className="px-4 py-2 rounded-lg border border-primary/20 bg-primary/5 text-foreground hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 text-sm font-medium"
+                      style={{ transform: 'translateZ(0)' }}
+                    >
+                      {skill}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Backend & Database */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="text-2xl text-primary">
+                    <Terminal className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-semibold">Backend & Database</h3>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {["MongoDB", "NoSQL", "Web Development", "APIs"].map((skill, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.05, duration: 0.3 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      className="px-4 py-2 rounded-lg border border-primary/20 bg-primary/5 text-foreground hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 text-sm font-medium"
+                      style={{ transform: 'translateZ(0)' }}
+                    >
+                      {skill}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Tools & Soft Skills */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="text-2xl text-primary">
+                    <Github className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-semibold">Tools & Soft Skills</h3>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {["Linux", "Git & GitHub", "Problem Solving", "Cyber Security"].map((skill, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.05, duration: 0.3 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      className="px-4 py-2 rounded-lg border border-primary/20 bg-primary/5 text-foreground hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 text-sm font-medium"
+                      style={{ transform: 'translateZ(0)' }}
+                    >
+                      {skill}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section id="about" className="py-20 bg-muted/20">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                I'm a passionate full-stack developer with expertise in cybersecurity and building secure web applications. With a strong foundation in computer science and years of experience in software development, I combine technical excellence with creative problem-solving to deliver innovative solutions.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                My journey in tech started with a deep interest in cybersecurity and ethical hacking. Over time, I've expanded my skillset to include full-stack development, cloud infrastructure, and system design. I believe in writing clean, maintainable code and creating user experiences that are both beautiful and secure.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                When I'm not coding, you'll find me exploring new security vulnerabilities, contributing to open-source projects, or sharing knowledge with the developer community. I'm always excited about learning new technologies and pushing the boundaries of what's possible.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Experience Section */}
+        <section className="py-20">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-2">Experience</h2>
+              <p className="text-muted-foreground">Professional journey and milestones</p>
+            </motion.div>
+
+            <div className="space-y-8">
+              {[
+                {
+                  title: "Senior Full-Stack Developer",
+                  company: "Tech Innovations Inc",
+                  period: "2022 - Present",
+                  description: "Leading development of enterprise security solutions using Next.js, React, and Node.js. Architected scalable microservices and implemented advanced security protocols.",
+                  skills: ["Next.js", "React", "Node.js", "PostgreSQL", "AWS"],
+                },
+                {
+                  title: "Full-Stack Developer",
+                  company: "Digital Solutions Co",
+                  period: "2020 - 2022",
+                  description: "Built responsive web applications and developed RESTful APIs. Implemented cybersecurity best practices and conducted security audits on production systems.",
+                  skills: ["React", "JavaScript", "MongoDB", "Express", "Security"],
+                },
+                {
+                  title: "Junior Developer",
+                  company: "StartUp Labs",
+                  period: "2019 - 2020",
+                  description: "Developed frontend components and worked on full-stack features. Learned cybersecurity fundamentals and contributed to open-source projects.",
+                  skills: ["JavaScript", "HTML/CSS", "Python", "Git", "Linux"],
+                },
+              ].map((exp, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="border-l-2 border-primary/30 pl-6 pb-8 last:pb-0"
+                >
+                  <div className="absolute w-4 h-4 bg-primary rounded-full -left-2 -top-1 mt-2" />
+                  <h3 className="text-xl font-bold text-foreground">{exp.title}</h3>
+                  <p className="text-primary font-medium">{exp.company}</p>
+                  <p className="text-sm text-muted-foreground mb-3">{exp.period}</p>
+                  <p className="text-muted-foreground mb-4">{exp.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.skills.map((skill, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-20 bg-muted/20">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-2">What Others Say</h2>
+              <p className="text-muted-foreground">Testimonials from clients and colleagues</p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  quote: "Sahil's attention to security and code quality is exceptional. Working with him elevated our entire development process.",
+                  author: "Alex Johnson",
+                  role: "CTO, TechFlow",
+                },
+                {
+                  quote: "One of the most skilled developers I've worked with. Great at translating complex requirements into elegant solutions.",
+                  author: "Sarah Chen",
+                  role: "Product Manager, SecureOps",
+                },
+                {
+                  quote: "His expertise in cybersecurity combined with modern development practices makes him invaluable to any team.",
+                  author: "Mike Davis",
+                  role: "Security Lead, CloudVault",
+                },
+              ].map((testimonial, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="bg-card border border-border/50 rounded-lg p-6 hover:border-primary/30 transition-colors"
+                >
+                  <p className="text-muted-foreground mb-4 leading-relaxed italic">
+                    "{testimonial.quote}"
+                  </p>
+                  <div>
+                    <p className="font-semibold text-foreground">{testimonial.author}</p>
+                    <p className="text-sm text-primary">{testimonial.role}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
@@ -600,39 +823,39 @@ function SkillCategoryCard({ title, skills, icon, delay = 0 }) {
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay, type: "spring" }}
+      transition={{ duration: 0.5, delay, type: "spring", stiffness: 80 }}
       viewport={{ once: true, margin: "-100px" }}
       whileHover={{ y: -12, boxShadow: "0 20px 60px rgba(147, 112, 219, 0.3)" }}
       className="bg-card border border-border rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-primary/70 group relative overflow-hidden animate-pulse-border"
+      style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
       <div className="flex items-center gap-3 mb-6 relative z-10">
-        <motion.div
-          whileHover={{ scale: 1.2, rotate: 10 }}
-          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          className="text-primary group-hover:text-primary-foreground animate-cyber-glow"
+        <div
+          className="text-primary group-hover:text-primary-foreground animate-cyber-glow transition-colors duration-300"
+          style={{ transform: 'translateZ(0)' }}
         >
           {icon}
-        </motion.div>
-        <motion.h3 
-          className="text-lg font-medium group-hover:text-primary transition-colors"
-          whileHover={{ x: 4 }}
+        </div>
+        <h3 
+          className="text-lg font-medium group-hover:text-primary transition-colors duration-300"
         >
           {title}
-        </motion.h3>
+        </h3>
       </div>
 
       <div className="flex flex-wrap gap-2 relative z-10">
         {skills.map((skill, index) => (
           <motion.span
             key={index}
-            initial={{ opacity: 0, scale: 0, x: -20 }}
-            whileInView={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ delay: delay + index * 0.08, type: "spring", stiffness: 100 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: delay + index * 0.05, duration: 0.3 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.05, rotate: 2 }}
+            whileHover={{ scale: 1.05 }}
             className="px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-xs font-medium hover:bg-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 cursor-pointer"
+            style={{ transform: 'translateZ(0)' }}
           >
             {skill}
           </motion.span>

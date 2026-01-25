@@ -24,12 +24,37 @@ export function AdminDashboard({ onClose }: { onClose: () => void }) {
   const fetchVisitors = async () => {
     try {
       setLoading(true)
-      const response = await fetch("/api/visitors")
-      if (!response.ok) throw new Error("Failed to fetch visitors")
+      setError("")
+      
+      console.log("[v0] Fetching visitors from /api/visitors...")
+      const response = await fetch("/api/visitors", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+
+      console.log("[v0] Response status:", response.status)
+      console.log("[v0] Response ok:", response.ok)
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: `HTTP ${response.status}` }))
+        console.error("[v0] API error response:", errorData)
+        throw new Error(errorData.error || `HTTP ${response.status}: ${response.statusText}`)
+      }
+
       const data = await response.json()
-      setVisitors(data)
+      console.log("[v0] Response data:", data)
+
+      // Handle both array and object responses
+      const visitorsData = Array.isArray(data) ? data : data.visitors || []
+      console.log("[v0] Setting visitors:", visitorsData.length)
+      setVisitors(visitorsData)
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred")
+      const errorMsg = err instanceof Error ? err.message : "An error occurred"
+      console.error("[v0] Fetch error:", errorMsg)
+      setError(errorMsg)
+      setVisitors([])
     } finally {
       setLoading(false)
     }

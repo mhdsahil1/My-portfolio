@@ -2,7 +2,6 @@ import type React from "react"
 import "@/app/globals.css"
 import { Inter, Space_Mono, JetBrains_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import { TerminalAnimation } from "@/components/terminal-animation"
 
 const inter = Inter({ subsets: ["latin"] })
 const spaceMono = Space_Mono({
@@ -86,21 +85,17 @@ export default function RootLayout({
       </head>
       <body className={`${jetbrainsMono.className} font-mono`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {/* Terminal animations in blank spaces */}
-          <TerminalAnimation />
-          
-          {/* Cybersecurity animated background elements */}
+          {/* Cybersecurity static background elements for performance */}
           <div className="fixed inset-0 pointer-events-none overflow-hidden -z-20">
-            {/* Animated grid background */}
-            <div className="absolute inset-0 opacity-5 dark:opacity-10" style={{
+            {/* Static grid background */}
+            <div className="absolute inset-0 opacity-3 dark:opacity-5" style={{
               backgroundImage: 'linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px), linear-gradient(0deg, hsl(var(--primary)) 1px, transparent 1px)',
               backgroundSize: '100px 100px',
-              animation: 'cyber-grid 30s linear infinite',
             }} />
             
-            {/* Floating cyber elements */}
-            <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float-code" />
-            <div className="absolute bottom-40 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />
+            {/* Static gradient blobs */}
+            <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-40 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-60" />
           </div>
           {children}
         </ThemeProvider>
