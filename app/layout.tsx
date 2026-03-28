@@ -22,6 +22,9 @@ export const metadata = {
     "B.Tech Computer Science student specializing in web development, cyber security, and full-stack technologies. Portfolio featuring projects, skills, and contact information.",
   keywords: ["developer", "web development", "cyber security", "portfolio", "React", "Next.js", "full-stack"],
   author: "Muhammed Sahil",
+  other: {
+    "breachme-verify": "breachme-verify=v0-sahil-dev-vercel-app-3d5480a2ae484eb0",
+  },
   openGraph: {
     title: "Muhammed Sahil - Developer Portfolio",
     description: "Explore my projects, skills, and experience in web development and cyber security.",
