@@ -336,7 +336,7 @@ export default function Portfolio() {
           </div>
         </motion.section>
 
-        <section id="about" ref={aboutRef} className="py-20 bg-muted/30">
+        <section id="about" ref={aboutRef} className="py-20">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -450,7 +450,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section id="projects" ref={projectsRef} className="py-20 bg-muted/30 cyber-background relative">
+        <section id="projects" ref={projectsRef} className="py-20 cyber-background relative">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <motion.div 
               className="absolute inset-0 opacity-10"
