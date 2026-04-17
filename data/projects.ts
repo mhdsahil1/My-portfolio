@@ -20,13 +20,13 @@ export const projects: Project[] = [
     github: "https://github.com/mhdsahil1/portfolio",
   },
   {
-    id: "todo-app",
-    title: "Interactive Todo Application",
+    id: "zestora",
+    title: "Zestora – Full Stack E-commerce Platform",
     description:
-      "A feature-rich todo app with real-time updates, local storage persistence, and beautiful animations using React hooks.",
-    tags: ["React", "JavaScript", "Local Storage", "CSS"],
-    category: "Web Development",
-    github: "https://github.com/mhdsahil1/todo-app",
+      "A production-ready e-commerce platform built with Next.js, featuring secure Google authentication, Razorpay payment integration, and a complete order management system. Includes dynamic product listings, real-time checkout flow, and backend verification for secure transactions.",
+    tags: ["Next.js", "MongoDB", "NextAuth", "Razorpay", "Tailwind CSS"],
+    category: "Full Stack Development",
+    github: "https://github.com/mhdsahil1/zestora",
   },
   {
     id: "cyber-blog",
