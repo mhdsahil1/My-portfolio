@@ -16,7 +16,7 @@ export const projects: Project[] = [
       "A fully responsive portfolio website showcasing my projects, skills, and experience built with Next.js and Tailwind CSS.",
     tags: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
     category: "Web Development",
-    link: "https://mhdsahil-portfolio.vercel.app",
+    link: "https://v0-sahil-folio.vercel.app/",
     github: "https://github.com/mhdsahil1/portfolio",
   },
   {
