@@ -26,7 +26,8 @@ export const projects: Project[] = [
       "A production-ready e-commerce platform built with Next.js, featuring secure Google authentication, Razorpay payment integration, and a complete order management system. Includes dynamic product listings, real-time checkout flow, and backend verification for secure transactions.",
     tags: ["Next.js", "MongoDB", "NextAuth", "Razorpay", "Tailwind CSS"],
     category: "Full Stack Development",
-    github: "https://github.com/mhdsahil1/zestora",
+    link: "https://v0-zestora-spices-in.vercel.app/",
+    github: "https://github.com/mhdsahil1/Zestora",
   },
   {
     id: "cyber-blog",
