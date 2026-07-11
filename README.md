@@ -1,30 +1,132 @@
-# Enhance with animation
+# 👋 Hi, I'm Sahil
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+🚀 **Full-Stack Developer | Cybersecurity Enthusiast | Engineering Student**
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/muhammedsahilshaz09-gmailcoms-projects/v0-enhance-with-animation)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/gFqhTV6RDe2)
+I'm passionate about building secure, scalable, and user-friendly web applications while exploring cybersecurity and modern software engineering. I enjoy turning ideas into real-world projects and continuously learning new technologies.
 
-## Overview
+---
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+## 💻 Tech Stack
 
-## Deployment
+### Languages
 
-Your project is live at:
+* JavaScript (ES6+)
+* TypeScript
+* C++
+* HTML5
+* CSS3
 
-**[https://vercel.com/muhammedsahilshaz09-gmailcoms-projects/v0-enhance-with-animation](https://vercel.com/muhammedsahilshaz09-gmailcoms-projects/v0-enhance-with-animation)**
+### Frontend
 
-## Build your app
+* React.js
+* Next.js
+* Tailwind CSS
+* Shadcn UI
 
-Continue building your app on:
+### Backend
 
-**[https://v0.app/chat/projects/gFqhTV6RDe2](https://v0.app/chat/projects/gFqhTV6RDe2)**
+* Node.js
+* Express.js
 
-## How It Works
+### Databases
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+* MongoDB
+* Mongoose
+
+### Authentication & Security
+
+* NextAuth
+* JWT
+* OAuth
+* bcrypt
+
+### Tools & Platforms
+
+* Git & GitHub
+* VS Code
+* Postman
+* Docker (Learning)
+* Linux
+* Vercel
+* Cloudinary
+
+---
+
+## 🚀 Featured Projects
+
+### 🛒 Zestora
+
+A full-stack e-commerce platform featuring secure authentication, product management, shopping cart, order management, payment integration, and an admin dashboard.
+
+**Topics**
+
+* Full-Stack Development
+* Authentication
+* REST APIs
+* MongoDB
+* Payment Integration
+* Admin Dashboard
+* Security Best Practices
+
+**Tech**
+Next.js • React • Node.js • MongoDB • NextAuth • Razorpay • Tailwind CSS
+
+---
+
+### 💬 Zline *(In Progress)*
+
+A real-time chat application with instant messaging, media sharing, authentication, and WebRTC-based communication.
+
+**Topics**
+
+* Real-Time Communication
+* WebSockets / Socket.IO
+* WebRTC
+* Authentication
+* Full-Stack Development
+* Responsive UI
+
+**Tech**
+Next.js • React • Node.js • Socket.IO • MongoDB • WebRTC • Tailwind CSS
+
+---
+
+## 🌱 Currently Learning
+
+* Advanced Next.js
+* Cybersecurity
+* Secure Backend Development
+* Docker & DevOps
+* System Design
+
+---
+
+## 🎯 Goals
+
+* Build production-ready full-stack applications.
+* Strengthen cybersecurity and secure coding skills.
+* Contribute to open-source projects.
+* Explore scalable system architecture and cloud technologies.
+
+---
+
+## 📊 GitHub Stats
+
+> Add GitHub Readme Stats cards here:
+>
+> * GitHub Stats
+> * Streak Stats
+> * Top Languages
+
+---
+
+## 📫 Connect With Me
+
+* GitHub: https://github.com/mhdsahil1
+* LinkedIn: https://linkedin.com/in/mhdsahil09
+* Portfolio: https://v0-sahil-dev-vercel.app
+* Email: [muhammedsahilshaz09@gmail.com](mailto:your-email@example.com)
+
+---
+
+> *"Code with purpose. Build with security. Keep learning."*
